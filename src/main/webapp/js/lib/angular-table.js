@@ -23,7 +23,8 @@ angular.module('angular-table', [])
                 };
             },
             scope: {
-                model: '='
+                model: '=',
+                filterQueryModel: '='
             }
         };
     }])
@@ -316,7 +317,7 @@ angular.module('angular-table', [])
 
                 // add the ng-repeat and row selection click handler to each row
                 rowTemplate = rowTemplate.replace('<tr',
-                    '<tr ng-repeat="row in model | orderBy:SortState.sortExpression:SortState.sortDirectionToColumnMap[SortState.sortExpression]" ' +
+                    '<tr ng-repeat="row in model | orderBy:SortState.sortExpression:SortState.sortDirectionToColumnMap[SortState.sortExpression] | filter:filterQueryModel" ' +
                         selectedBackgroundColor + ngClick);
             }
 
